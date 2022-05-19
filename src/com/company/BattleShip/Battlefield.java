@@ -14,17 +14,7 @@ public class Battlefield {
         }
     }
 
-    public boolean isAvailableForShip(int x, int y) {
-        for (int i = x - 1; i <= x + 1; i++) {
-            for (int j = y - 1; j <= y + 1; j++) {
-                if (i >= 0 && i <= 9 && j >= 0 && j <= 9) {
-                    if (cells[i][j].getState() != FieldState.EMPTY && cells[i][j].getState() != FieldState.AUREOLE)
-                        return false;
-                }
-            }
-        }
-        return true;
-    }
+
 
     public void addShip(int x, int y, FieldState state) {
         if (isAvailableForShip(x, y)) {
@@ -75,16 +65,6 @@ public class Battlefield {
                     }
                 }
             }
-        }
-    }
-
-    public void hit(int x, int y) {
-        switch (cells[x][y].getState()) {
-            case SHIP1_1, SHIP1_2, SHIP1_3, SHIP1_4, SHIP2_1, SHIP2_2, SHIP2_3, SHIP3_1, SHIP3_2, SHIP4:
-                setCell(x, y, FieldState.HIT);
-
-            case EMPTY, AUREOLE, HIT,MISS:
-                break;
         }
     }
 
